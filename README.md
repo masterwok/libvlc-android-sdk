@@ -13,7 +13,7 @@ allprojects {
     }
 }
 ```
-and:
+and add the following in the dependent module:
 
 ```gradle
 dependencies {
