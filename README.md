@@ -1,4 +1,4 @@
-# libvlc-android-sdk
+# [UNOFFICIAL] libvlc-android-sdk
 An unofficial library of LibVLC for Android. The goal of this project is to be able to use LibVLC as a simple Android dependency.
 
 ## Building (LibVLC)
