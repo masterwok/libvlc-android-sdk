@@ -1,1 +1,1 @@
-include ':sample', ':libvlc'
+include ':sample', ':libvlc', ':libvlc'
