@@ -1,5 +1,25 @@
+[![Release](https://jitpack.io/v/masterwok/libvlc-android-sdk.svg)](https://jitpack.io/#masterwok/libvlc-android-sdk)
+
 # [UNOFFICIAL] libvlc-android-sdk
 An unofficial library of LibVLC for Android. The goal of this project is to be able to use LibVLC as a simple Android dependency.
+
+## Usage
+
+Add this in your root build.gradle at the end of repositories:
+```gradle
+allprojects {
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+and:
+
+```gradle
+dependencies {
+    implementation 'com.github.masterwok:libvlc-android-sdk:v3.0.0'
+}
+```
 
 ## Building (LibVLC)
 This is the tricky bit. If you want to build this project on your own, I would recommend doing it within a Ubuntu VM. I ran into quite a few build problems and found it helpful to fallback to snapshots when initially attempting to build LibVLC. Follow the official compile wiki [here](https://wiki.videolan.org/AndroidCompile/#Get_VLC_Source) to setup your development environment (no need to clone repo or that jazz yet, see below). Once completed, follow these steps:
