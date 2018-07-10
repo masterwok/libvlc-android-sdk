@@ -17,7 +17,7 @@ and add the following in the dependent module:
 
 ```gradle
 dependencies {
-    implementation 'com.github.masterwok:libvlc-android-sdk:v3.0.0'
+    implementation 'com.github.masterwok:libvlc-android-sdk:3.0.11'
 }
 ```
 
