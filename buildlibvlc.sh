@@ -1,5 +1,7 @@
 #!/bin/sh
 
+tag='3.0.11'
+
 rootdir=`dirname $0`
 
 checkfail()
@@ -14,6 +16,8 @@ if [ ! -d "${rootdir}/vlc-android" ]; then
     echo "VLC Android source not found, cloning"
     git clone http://code.videolan.org/videolan/vlc-android.git
     checkfail "git clone"
+    git -C ${rootdir}/vlc-android checkout tags/${tag}
+    checkfail "git checkout"
 fi
 
 sh -c "cd ${rootdir}/vlc-android && ./compile.sh -l $*"

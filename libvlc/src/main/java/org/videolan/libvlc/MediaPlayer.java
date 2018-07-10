@@ -372,8 +372,6 @@ public class MediaPlayer extends VLCObject<MediaPlayer.Event> {
     private boolean mAudioDigitalOutputEnabled = false;
     private String mAudioPlugOutputDevice = "stereo";
 
-    private boolean mCanDoPassthrough;
-
     private final AWindow mWindow = new AWindow(new AWindow.SurfaceCallback() {
         @Override
         public void onSurfacesCreated(AWindow vout) {
@@ -404,8 +402,7 @@ public class MediaPlayer extends VLCObject<MediaPlayer.Event> {
     });
 
     private synchronized void updateAudioOutputDevice(long encodingFlags, String defaultDevice) {
-        mCanDoPassthrough = encodingFlags != 0;
-        final String newDeviceId = mAudioDigitalOutputEnabled && mCanDoPassthrough ? "encoded:" + encodingFlags : defaultDevice;
+        final String newDeviceId = mAudioDigitalOutputEnabled && encodingFlags != 0 ? "encoded:" + encodingFlags : defaultDevice;
         if (!newDeviceId.equals(mAudioPlugOutputDevice)) {
             mAudioPlugOutputDevice = newDeviceId;
             setAudioOutputDeviceInternal(mAudioPlugOutputDevice, false);
@@ -1202,10 +1199,6 @@ public class MediaPlayer extends VLCObject<MediaPlayer.Event> {
             mMedia.release();
         mVoutCount = 0;
         nativeRelease();
-    }
-
-    public boolean canDoPassthrough() {
-        return mCanDoPassthrough;
     }
 
     /* JNI */

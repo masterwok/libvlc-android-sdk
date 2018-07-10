@@ -143,7 +143,7 @@ public class HWDecoderUtil {
          */
         if (AndroidUtil.isJellyBeanMR2OrLater)
             return Decoder.ALL;
-        else {
+        else if (AndroidUtil.isHoneycombOrLater) {
             for (DecoderBySOC decBySOC : sDecoderBySOCList) {
                 final String prop = getSystemPropertyCached(decBySOC.key);
                 if (prop != null) {
