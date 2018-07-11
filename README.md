@@ -1,7 +1,7 @@
 [![Release](https://jitpack.io/v/masterwok/libvlc-android-sdk.svg)](https://jitpack.io/#masterwok/libvlc-android-sdk)
 
 # [UNOFFICIAL] libvlc-android-sdk
-An unofficial library of LibVLC for Android. The goal of this project is to be able to use LibVLC as a simple Android dependency.
+An unofficial library of LibVLC for Android. The goal of this project is to be able to use LibVLC as an Android dependency. 
 
 ## Usage
 
@@ -20,6 +20,43 @@ dependencies {
     implementation 'com.github.masterwok:libvlc-android-sdk:3.0.11'
 }
 ```
+unless you're a fan of large APKs, you'll probably want to add the following to the build.gradle of your app so an APK is generated per ABI:
+
+```gradle
+android {
+    ...
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+            universalApk false
+        }
+    }
+}
+
+// Map for the version code that gives each ABI a value.
+ext.abiCodes = [
+        'armeabi-v7a': 1,
+        'arm64-v8a'  : 2,
+        'x86'        : 3,
+        'x86_64'     : 4
+]
+
+import com.android.build.OutputFile
+
+android.applicationVariants.all { variant ->
+    variant.outputs.each { output ->
+        def baseAbiVersionCode = project.ext.abiCodes.get(output.getFilter(OutputFile.ABI))
+
+        if (baseAbiVersionCode != null) {
+            output.versionCodeOverride = baseAbiVersionCode * 10000000 + variant.versionCode
+        }
+    }
+}
+```
+
+
 
 ## Building (LibVLC)
 This is the tricky bit. If you want to build this project on your own, I would recommend doing it within a Ubuntu VM. I ran into quite a few build problems and found it helpful to fallback to snapshots when initially attempting to build LibVLC. Follow the official compile wiki [here](https://wiki.videolan.org/AndroidCompile/#Get_VLC_Source) to setup your development environment (no need to clone repo or that jazz yet, see below). Once completed, follow these steps:
