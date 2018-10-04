@@ -20,5 +20,5 @@ if [ ! -d "${rootdir}/vlc-android" ]; then
     checkfail "git checkout"
 fi
 
-sh -c "cd ${rootdir}/vlc-android && ./compile.sh -l $*"
+sh -c "cd ${rootdir}/vlc-android && ./compile.sh -l $* -r"
 checkfail "./vlc-android/compile.sh $*"
