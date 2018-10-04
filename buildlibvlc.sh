@@ -1,6 +1,6 @@
 #!/bin/sh
 
-tag='3.0.11'
+tag='3.0.13'
 
 rootdir=`dirname $0`
 
