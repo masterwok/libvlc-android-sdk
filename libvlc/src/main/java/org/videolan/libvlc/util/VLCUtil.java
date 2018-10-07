@@ -63,8 +63,8 @@ public class VLCUtil {
     @SuppressWarnings("deprecation")
     public static String[] getABIList() {
         final String[] abis = new String[2];
-        abis[0] = Build.CPU_ABI;
-        abis[1] = Build.CPU_ABI2;
+        abis[0] = android.os.Build.CPU_ABI;
+        abis[1] = android.os.Build.CPU_ABI2;
         return abis;
     }
 
