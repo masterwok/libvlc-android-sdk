@@ -17,7 +17,7 @@ and add the following in the dependent module:
 
 ```gradle
 dependencies {
-    implementation 'com.github.masterwok:libvlc-android-sdk:3.0.13'
+    implementation 'com.github.masterwok:libvlc-android-sdk:3.0.11'
 }
 ```
 unless you're a fan of large APKs, you'll probably want to add the following to the build.gradle of your app so an APK is generated per ABI:
